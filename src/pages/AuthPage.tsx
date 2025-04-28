@@ -122,7 +122,7 @@ export default function AuthPage() {
   };
 
   const currentYear = new Date().getFullYear();
-  const yearOptions = Array.from({ length: 25 }, (_, i) => currentYear - i);
+  const yearOptions = [currentYear , currentYear - 1];;
 
   const handleNsatVerification = async (email: string) => {
     try {
