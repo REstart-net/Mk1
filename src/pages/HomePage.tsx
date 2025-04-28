@@ -998,22 +998,6 @@ export default function HomePage() {
                                 ))}
                               </ul>
                               
-                              <Button
-                                variant="ghost"
-                                size="sm"
-                                className={`mt-4 ${
-                                  feature.color === 'blue' ? 'text-blue-500 hover:bg-blue-500/10' :
-                                  feature.color === 'green' ? 'text-green-500 hover:bg-green-500/10' :
-                                  feature.color === 'purple' ? 'text-purple-500 hover:bg-purple-500/10' :
-                                  feature.color === 'amber' ? 'text-amber-500 hover:bg-amber-500/10' :
-                                  feature.color === 'pink' ? 'text-pink-500 hover:bg-pink-500/10' :
-                                  'text-orange-500 hover:bg-orange-500/10'
-                                }`}
-                                onClick={() => showNotification(`Learn more about ${feature.title}`)}
-                              >
-                                Learn more
-                                <ArrowRight className="ml-2 h-4 w-4" />
-                              </Button>
                   </motion.div>
                           )}
           </AnimatePresence>
