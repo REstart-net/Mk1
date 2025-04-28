@@ -30,6 +30,8 @@ export default function AuthPage() {
   const [passwordStrength, setPasswordStrength] = useState(0);
   const [isVerifying, setIsVerifying] = useState(false);
   const [showForgotPassword, setShowForgotPassword] = useState(false);
+  const [loginError, setLoginError] = useState<string | null>(null);
+  const [registerError, setRegisterError] = useState<string | null>(null);
   
   const loginForm = useForm<Pick<InsertUser, "email" | "password">>({
     resolver: zodResolver(insertUserSchema.pick({ email: true, password: true })),
@@ -62,6 +64,40 @@ export default function AuthPage() {
     } catch (error) {
       console.error("Error resetting password:", error);
       toast.error("Failed to send reset email. Please try again.");
+    }
+  };
+
+  const handleLogin = async (data: { email: string; password: string }) => {
+    try {
+      await loginMutation.mutateAsync(data);
+      setLoginError(null); // Clear any previous error
+      toast.success("Login successful!");
+    } catch (error: any) {
+      console.error("Login error:", error);
+      if (error.response?.status === 401) {
+        setLoginError("Invalid email or password. Please try again.");
+      } else if (error.response?.data?.message) {
+        setLoginError(error.response.data.message);
+      } else {
+        setLoginError("Invalid email or password. Please try again.");
+      }
+    }
+  };
+
+  const handleRegister = async (data: InsertUser) => {
+    try {
+      await registerMutation.mutateAsync(data);
+      setRegisterError(null); // Clear any previous error
+      toast.success("Account created successfully!");
+    } catch (error: any) {
+      console.error("Registration error:", error);
+      if (error.response?.status === 409) {
+        setRegisterError("This email is already registered. Please use a different email.");
+      } else if (error.response?.data?.message) {
+        setRegisterError(error.response.data.message);
+      } else {
+        setRegisterError("This email is already registered. Please use a different email.");
+      }
     }
   };
 
@@ -128,7 +164,7 @@ export default function AuthPage() {
 
                 <TabsContent value="login">
                   <Form {...loginForm}>
-                    <form onSubmit={loginForm.handleSubmit((data) => loginMutation.mutate(data))} className="space-y-4">
+                    <form onSubmit={loginForm.handleSubmit(handleLogin)} className="space-y-4">
                       <FormField
                         control={loginForm.control}
                         name="email"
@@ -204,6 +240,7 @@ export default function AuthPage() {
                           </FormItem>
                         )}
                       />
+                      {loginError && <p className="text-red-500 text-sm">{loginError}</p>}
                       <Button type="submit" className="w-full" disabled={loginMutation.isPending}>
                         {loginMutation.isPending ? (
                           <motion.div
@@ -223,7 +260,7 @@ export default function AuthPage() {
 
                 <TabsContent value="register">
                   <Form {...registerForm}>
-                    <form onSubmit={registerForm.handleSubmit((data) => registerMutation.mutate(data))} className="space-y-4">
+                    <form onSubmit={registerForm.handleSubmit(handleRegister)} className="space-y-4">
                       <FormField
                         control={registerForm.control}
                         name="fullName"
@@ -451,7 +488,7 @@ export default function AuthPage() {
                           </FormItem>
                         )}
                       />
-
+                      {registerError && <p className="text-red-500 text-sm">{registerError}</p>}
                       <Button type="submit" className="w-full" disabled={registerMutation.isPending}>
                         {registerMutation.isPending ? (
                           <motion.div

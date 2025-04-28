@@ -103,19 +103,36 @@ const PageLoader = () => (
 const MouseFollower = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [isVisible, setIsVisible] = useState(false);
-  
 
-  
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      setMousePosition({ x: e.clientX, y: e.clientY });
+    };
+
+    const handleMouseEnter = () => setIsVisible(true);
+    const handleMouseLeave = () => setIsVisible(false);
+
+    window.addEventListener("mousemove", handleMouseMove);
+    window.addEventListener("mouseenter", handleMouseEnter);
+    window.addEventListener("mouseleave", handleMouseLeave);
+
+    return () => {
+      window.removeEventListener("mousemove", handleMouseMove);
+      window.removeEventListener("mouseenter", handleMouseEnter);
+      window.removeEventListener("mouseleave", handleMouseLeave);
+    };
+  }, []);
+
   return (
     <AnimatePresence>
       {isVisible && (
         <motion.div
           initial={{ scale: 0, opacity: 0 }}
-          animate={{ 
-            scale: 1, 
+          animate={{
+            scale: 1,
             opacity: 0.2,
             x: mousePosition.x - 15,
-            y: mousePosition.y - 15
+            y: mousePosition.y - 15,
           }}
           exit={{ scale: 0, opacity: 0 }}
           className="fixed w-8 h-8 rounded-full bg-primary pointer-events-none z-50 mix-blend-difference"
@@ -550,9 +567,9 @@ export default function HomePage() {
                 initial={{ opacity: 0, scale: 0.5, rotate: -10 }}
                 animate={{ opacity: 1, scale: 1, rotate: 0 }}
                 transition={{ duration: 0.5, type: "spring" }}
-                src="https://media-hosting.imagekit.io//e60a0a3fac904c2a/WhatsApp_Image_2025-01-26_at_20.14.19-removebg-preview%20(3).png?Expires=1834242508&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=nVFdXSeeo14FtjV6G~ppAgawYVuWM5ZBFu3VmE~6EUH79Qe3QJ479US4D8pggGisa~3D5nKS0ICnJFBkwZyIV8iDLMX6LMTxPnoH9OkOnaYACbTTPgISyWVxr33MreB2LGvj0ePD5wi-weKMOaF-jYY9nr0AXGiYtUbOpCvRgws7RsDMKcTtO8xA~HP9Jim90PxyNhfp1842BWY~GDnlguAKH87V-Q-5RB8JJ6q~-wO9gX-ScIP26GqRVmXMQPmo4uuA6JH4fVvc1MjUKbBHtQBZ-3xFP0pAJax3I2lVLNX1EP2kHTpJuUTwwnLBCnkMNwst3BinXaixwg6I~kdkLw__"
+                src="/Logo.png"
                 alt="REstart LMS"
-                className="h-10 w-auto"
+                className="h-7 w-auto"
               />
               
             </Link>
@@ -650,7 +667,7 @@ export default function HomePage() {
           <SupportUsSection />
           
           {/* Enhanced Hero Section */}
-          <section className="min-h-screen flex items-center relative overflow-hidden">
+          <section className="min-h-screen flex items-center relative overflow-hidden mt-12">
             {/* Animated background */}
             <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-primary/5">
             <div className="absolute inset-0 bg-grid-white/[0.02] bg-[size:50px_50px]" />
@@ -683,28 +700,19 @@ export default function HomePage() {
 
             <div className="container mx-auto px-4 relative z-10">
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <motion.div
-                  initial={{ opacity: 0, x: -50 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.8 }}
-                >
-                  <Badge className="mb-4 px-3 py-1 bg-primary/10 text-primary border-primary/20">
-                    NSAT Preparation Platform
-                  </Badge>
-                  
-                  <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-                    <span className="text-foreground">Master the </span>
-                    <span className="text-primary relative text-customBlue">
-                      NSAT
-                      <motion.div
-                        className="absolute -bottom-2 left-0 h-2 bg-primary/30 w-full rounded-full"
-                        initial={{ width: 0 }}
-                        animate={{ width: "100%" }}
-                        transition={{ delay: 0.5, duration: 0.8 }}
-              />
-            </span>
-                    <span className="text-foreground"> with Confidence</span>
-                  </h1>
+              <motion.div
+  initial={{ opacity: 0, x: -50 }}
+  animate={{ opacity: 1, x: 0 }}
+  transition={{ duration: 0.8 }}
+>
+
+  <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+    <span className="text-foreground font-start">Master the </span>
+    <span className="text-primary font-start font-medium text-customBlue">
+      NSAT
+    </span>
+    <span className="text-foreground"> with Confidence</span>
+  </h1>
                   
                   <p className="text-muted-foreground text-lg md:text-xl mb-8 max-w-xl">
                     Personalized learning paths, expert-designed content, and advanced analytics to help you excel in your NSAT exam.
