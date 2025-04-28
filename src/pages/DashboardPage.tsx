@@ -220,6 +220,17 @@ export default function DashboardPage() {
                 </Button>
               </div>
 
+                          <div className="px-3 mb-6">
+                <div className="relative">
+                  <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
+                  <Input
+                    type="search"
+                    placeholder="Search..."
+                    className="w-full bg-background pl-8 pr-4 py-2 text-sm"
+                  />
+                </div>
+              </div>
+              
               <div className="px-3 space-y-1 flex-1">
                 {currentSidebarItems.map((item, index) => {
                   const isActive = location === item.href || (item.href !== "/dashboard" && location.startsWith(item.href));
@@ -299,6 +310,14 @@ export default function DashboardPage() {
                 </div>
               </div>
               <div className="flex gap-3">
+                <div className="relative">
+                  <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
+                  <Input
+                    type="search"
+                    placeholder="Search..."
+                    className="w-60 bg-background pl-8 pr-4 py-2"
+                  />
+                </div>
                 <Button variant="ghost" size="icon">
                   <Bell className="h-5 w-5" />
                 </Button>
