@@ -32,7 +32,7 @@ const packages: Package[] = [
     id: "premium",
     name: "Premium Package",
     price: 1999,
-    description: "1 NSAT exam attempt, Access to free study materials, All subject chapterwise mock tests, 2 live doubt sessions per week, Interview prep session, Free with referral code + ₹200",
+    description: "Access to study materials, All subject chapterwise mock tests,live doubt sessions, Free with referral code + ₹200",
     color: "blue",
     regularPrice: 1999,
     features: []
@@ -41,7 +41,7 @@ const packages: Package[] = [
     id: "ultimate",
     name: "Ultimate Package",
     price: 3499,
-    description: "1 NSAT exam attempt, Access to free study materials, All subject chapterwise mock tests, Two live doubt sessions per week, 24-hour doubt solution guarantee, Interview prep session, Google Summer of Code preparation, Tech career guidance & mentorship, Free sessions on new technologies, Free with referral code + ₹500",
+    description: "Access to study materials, All subject chapterwise mock tests,live doubt sessions, 24-hours doubt support, Interview prep session, Tech career guidance & mentorship, Free with referral code + ₹500",
     color: "purple",
     regularPrice: 3499,
     features: []
