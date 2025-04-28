@@ -5,7 +5,6 @@ import { Link } from "wouter";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   FileText,
-  GraduationCap,
   BrainCircuit,
   ArrowRight,
   Users,
@@ -23,10 +22,6 @@ import {
   MessageSquare,
   X,
   MapPin,
-  Building,
-  School,
-  Briefcase,
-  ExternalLink,
   Heart,
   CreditCard,
   Share2,
