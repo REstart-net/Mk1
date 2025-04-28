@@ -20,15 +20,6 @@ interface Package {
 
 const packages: Package[] = [
   {
-    id: "basic",
-    name: "Basic Package",
-    price: 900,
-    description: "1 NSAT exam attempt, Access to free study materials, All subject chapterwise mock tests, ₹900 using referral code",
-    color: "primary",
-    regularPrice: 900,
-    features: []
-  },
-  {
     id: "premium",
     name: "Premium Package",
     price: 1999,
