@@ -1339,92 +1339,66 @@ export default function HomePage() {
           </ParallaxSection>
 
           {/* Founders Section */}
-          <ParallaxSection depth={0.2}>
-            <section className="py-20 bg-muted/30 relative overflow-hidden">
-              <div className="container mx-auto px-4">
-                <motion.div 
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  className="text-center mb-16"
-                >
-                  <h2 className="text-4xl font-bold mb-4">
-                    <ScrollHighlightText>Meet the Team</ScrollHighlightText>
-                  </h2>
-                </motion.div>
-                
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                  {[
-                    {
-                      name: "Chiranjeev Agrawal",
-                      role: "CEO",
-                      bio: "Visionary leader with extensive experience in education technology and NSAT preparation.",
-                      image: "/ceo1.png",
-                      achievements: ["Education Innovator", "Tech Entrepreneur",]
-                    },
-                    {
-                      name: "Sahil Khan",
-                      role: "Managing Director",
-                      bio: "Strategic leader focused on expanding educational access and improving student outcomes.",
-                      image: "/md1.png",
-                      achievements: ["Education Management", "Operational Excellence"]
-                    },
-                    {
-                      name: "Aditya Prakash",
-                      role: "CTO",
-                      bio: "Technology expert specializing in educational platforms and adaptive learning systems.",
-                      image: "/cto.png",
-                      achievements: ["Full-Stack Developer", "AI Learning Systems", "EdTech Innovation"]
-                    }
-                  ].map((founder, index) => (
-                    <motion.div
-                      key={index}
-                      initial={{ opacity: 0, y: 20 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ delay: index * 0.1 }}
-                      whileHover={{ y: -5 }}
-                      className="bg-card rounded-xl overflow-hidden border border-border/50 shadow-lg"
-                    >
-                      <div className="relative h-64 overflow-hidden">
-                        <img 
-                          src={founder.image} 
-                          alt={founder.name} 
-                          className="w-full h-full object-cover"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
-                        <div className="absolute bottom-4 left-4 text-white">
-                          <h3 className="text-xl font-bold">{founder.name}</h3>
-                          <p className="text-sm text-primary">{founder.role}</p>
-                        </div>
-                      </div>
-                      
-                      <div className="p-4">
-                        <p className="text-muted-foreground mb-4">{founder.bio}</p>
-                        
-                        <div className="space-y-2">
-                          {founder.achievements.map((achievement, aIndex) => (
-                            <div key={aIndex} className="flex items-center gap-2 text-sm">
-                              <div className="flex-shrink-0">
-                                {aIndex === 0 ? (
-                                  <School className="h-4 w-4 text-primary" />
-                                ) : aIndex === 1 ? (
-                                  <Briefcase className="h-4 w-4 text-primary" />
-                                ) : (
-                                  <Users className="h-4 w-4 text-primary" />
-                                )}
-                              </div>
-                              <span>{achievement}</span>
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-              </motion.div>
-                  ))}
-                </div>
+<ParallaxSection depth={0.2}>
+  <section className="py-20 bg-muted/30 relative overflow-hidden">
+    <div className="container mx-auto px-4">
+      <motion.div 
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        className="text-center mb-16"
+      >
+        <h2 className="text-4xl font-bold mb-4">
+          <ScrollHighlightText>Meet the Team</ScrollHighlightText>
+        </h2>
+      </motion.div>
+      
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {[
+          {
+            name: "Chiranjeev Agrawal",
+            role: "CEO",
+            image: "/ceo1.png",
+          },
+          {
+            name: "Sahil Khan",
+            role: "Managing Director",
+            image: "/md1.png",
+          },
+          {
+            name: "Aditya Prakash",
+            role: "CTO",
+            image: "/cto.png",
+          }
+        ].map((founder, index) => (
+          <motion.div
+            key={index}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: index * 0.1 }}
+            whileHover={{ y: -5 }}
+            className="bg-card rounded-xl overflow-hidden border border-border/50 shadow-lg"
+          >
+            <div className="relative h-64 overflow-hidden">
+              <img 
+                src={founder.image} 
+                alt={founder.name} 
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
+              <div className="absolute bottom-4 left-4 text-white">
+                <h3 className="text-xl font-bold">{founder.name}</h3>
+                <p className="text-sm text-primary">{founder.role}</p>
               </div>
-            </section>
-          </ParallaxSection>
+            </div>
+          </motion.div>
+        ))}
+      </div>
+    </div>
+  </section>
+</ParallaxSection>
+
           
           {/* FAQ Section */}
           <section className="py-20 relative overflow-hidden">
