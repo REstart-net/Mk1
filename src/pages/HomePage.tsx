@@ -753,7 +753,7 @@ export default function HomePage() {
                         ))}
                       </div>
                       <p className="text-sm text-muted-foreground">
-                        <span className="font-medium">4.9/5</span> from over 2,000 students
+                        <span className="font-medium">4.7/5</span> from over 300+ students
                       </p>
                     </div>
                   </div>
