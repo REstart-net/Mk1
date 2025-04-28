@@ -1359,14 +1359,14 @@ export default function HomePage() {
                       name: "Chiranjeev Agrawal",
                       role: "CEO",
                       bio: "Visionary leader with extensive experience in education technology and NSAT preparation.",
-                      image: "/ceo.png",
+                      image: "/ceo1.png",
                       achievements: ["Education Innovator", "Tech Entrepreneur",]
                     },
                     {
                       name: "Sahil Khan",
                       role: "Managing Director",
                       bio: "Strategic leader focused on expanding educational access and improving student outcomes.",
-                      image: "/md.png",
+                      image: "/md1.png",
                       achievements: ["Education Management", "Operational Excellence"]
                     },
                     {
