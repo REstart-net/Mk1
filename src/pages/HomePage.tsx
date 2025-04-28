@@ -1426,7 +1426,7 @@ export default function HomePage() {
                     },
                     {
                       question: "How long does it take to prepare for the NSAT exam?",
-                      answer: "The preparation time varies based on your current knowledge level and target score. On average, students spend 3-6 months preparing for the NSAT exam. Our platform provides a personalized study plan that optimizes your preparation time."
+                      answer: "The preparation time varies based on your current knowledge level and target score. Our platform provides a personalized study plan that optimizes your preparation time."
                     },
                     {
                       question: "Do you offer live classes or is it all self-paced?",
@@ -1434,11 +1434,11 @@ export default function HomePage() {
                     },
                     {
                       question: "How accurate are your mock tests compared to the actual NSAT?",
-                      answer: "Our mock tests are designed by former NSAT examiners and experts who understand the exam pattern thoroughly. We regularly update our question bank based on the latest exam trends and have a 95% pattern match with the actual NSAT exam."
+                      answer: "Our mock tests are crafted by former NSAT examiners and subject matter experts who deeply understand the exam pattern. We continuously update our question bank to reflect the latest trends, ensuring the most relevant and effective test series for NSAT preparation."
                     },
                     {
                       question: "Can I access the platform on mobile devices?",
-                      answer: "Yes, REstart LMS is fully responsive and works seamlessly on smartphones and tablets. We also offer dedicated apps for iOS and Android devices that allow offline access to downloaded study materials."
+                      answer: "Yes, REstart LMS is fully responsive and works seamlessly on smartphones and tablets."
                     },
                     {
                       question: "What if I need help or have questions during my preparation?",
