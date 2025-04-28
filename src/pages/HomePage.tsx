@@ -384,17 +384,6 @@ const SupportUsSection = () => {
                     <p className="text-sm text-muted-foreground">
                       Your support helps us create more life-changing content and grow REstart into a movement. Every contribution counts 💙
                     </p>
-                    <div className="flex flex-wrap gap-2 mt-2">
-                      <Badge variant="outline" className="bg-blue-500/10 text-blue-500 border-blue-500/20">
-                        Empower
-                      </Badge>
-                      <Badge variant="outline" className="bg-green-500/10 text-green-500 border-green-500/20">
-                        Sustain
-                      </Badge>
-                      <Badge variant="outline" className="bg-purple-500/10 text-purple-500 border-purple-500/20">
-                        Grow
-                      </Badge>
-                    </div>
                   </div>
                   
                   <div className="flex justify-center">
