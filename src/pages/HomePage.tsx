@@ -83,7 +83,7 @@ const PageLoader = () => (
       >
         <Loader2 className="h-12 w-12 text-primary" />
       </motion.div>
-      <p className="text-muted-foreground animate-pulse">Loading amazing content...</p>
+      <p className="text-muted-foreground animate-pulse">Wapas bhaag jaa bsdk abhi bhi time hai!</p>
       <motion.div
         initial={{ width: 0 }}
         animate={{ width: 200 }}
