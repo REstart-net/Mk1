@@ -707,11 +707,11 @@ export default function HomePage() {
 >
 
   <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-    <span className="text-foreground font-start">Master the </span>
-    <span className="text-primary font-start font-medium text-customBlue">
+    <span className="text-foreground font-start font-bold">Master the </span>
+    <span className="text-primary font-start font-bold text-customBlue">
       NSAT
     </span>
-    <span className="text-foreground"> with Confidence</span>
+    <span className="text-foreground font-bold"> with Confidence</span>
   </h1>
                   
                   <p className="text-muted-foreground text-lg md:text-xl mb-8 max-w-xl">
