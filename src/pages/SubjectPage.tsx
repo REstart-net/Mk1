@@ -275,7 +275,7 @@ export default function SubjectPage() {
                       </div>
                       <div className="flex items-center gap-1">
                         <FileText className="h-4 w-4" />
-                        {fullTests[subject as Subject].questions} questions
+                        {fullTests[subject as Subject].questions} Questions
                       </div>
                       <span className={`px-2 py-0.5 rounded-full text-xs font-medium ${getDifficultyColor(fullTests[subject as Subject].difficulty)}`}>
                         {fullTests[subject as Subject].difficulty}
