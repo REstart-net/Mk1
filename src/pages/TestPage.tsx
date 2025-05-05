@@ -16,6 +16,10 @@ import { hasAttemptedTest, recordTestAttempt } from "@/lib/api";
 import { ReferralVerification } from "@/components/ReferralVerification";
 
 export default function TestPage() {
+  // --- Tab Switch Limiting State ---
+  const [tabSwitchAttempts, setTabSwitchAttempts] = useState(3);
+  const [showTabSwitchWarning, setShowTabSwitchWarning] = useState(false);
+
   const [, setLocation] = useLocation();
   const { subject: encodedSubject } = useParams<{ subject: string }>();
   const subject = decodeURIComponent(encodedSubject) as Subject;
@@ -105,6 +109,30 @@ export default function TestPage() {
     return () => document.removeEventListener("fullscreenchange", handleFullScreenChange);
   }, []);
 
+  // --- Tab Switch Limiting Logic ---
+  useEffect(() => {
+    if (!testStarted || showResults) return;
+    const handleVisibilityChange = () => {
+      if (document.visibilityState === 'hidden' && tabSwitchAttempts > 0) {
+        setTabSwitchAttempts(prev => {
+          if (prev <= 1) {
+            setShowTabSwitchWarning(true);
+            setTimeout(() => setShowTabSwitchWarning(false), 2500);
+            // Auto-submit test on last attempt
+            setTimeout(() => handleSubmitTest(), 2500);
+            return 0;
+          } else {
+            setShowTabSwitchWarning(true);
+            setTimeout(() => setShowTabSwitchWarning(false), 2500);
+            return prev - 1;
+          }
+        });
+      }
+    };
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+    return () => document.removeEventListener('visibilitychange', handleVisibilityChange);
+  }, [testStarted, showResults, tabSwitchAttempts]);
+
   const startTest = async () => {
     try {
       if (document.documentElement.requestFullscreen) {
@@ -181,6 +209,18 @@ export default function TestPage() {
       </div>
     );
   }
+
+  // --- Tab Switch Warning Banner ---
+  const renderTabSwitchWarning = () => (
+    showTabSwitchWarning && (
+      <div className="fixed top-4 left-1/2 transform -translate-x-1/2 bg-amber-100 border border-amber-300 text-amber-800 px-4 py-2 rounded shadow-lg z-50 flex items-center gap-2 animate-pulse">
+        <AlertCircle className="h-5 w-5 text-amber-500" />
+        {tabSwitchAttempts > 0
+          ? `Warning: You have ${tabSwitchAttempts} tab switch${tabSwitchAttempts === 1 ? '' : 'es'} left!`
+          : 'No tab switches left. Test will be submitted.'}
+      </div>
+    )
+  );
 
   if (error) {
     return (
@@ -369,6 +409,7 @@ export default function TestPage() {
   if (!testStarted && test) {
     return (
       <div className="min-h-screen pt-8 px-4 md:px-8">
+        {renderTabSwitchWarning()}
         <TestInstructions 
           subject={subject}
           totalQuestions={test.questions.length}
@@ -571,6 +612,7 @@ export default function TestPage() {
 
   return (
     <div className="min-h-screen bg-background">
+      {renderTabSwitchWarning()}
       <div className="container mx-auto px-4 py-8">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div className="md:col-span-2 space-y-6">
